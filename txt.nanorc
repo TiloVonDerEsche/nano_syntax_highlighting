@@ -1,0 +1,30 @@
+## Syntax highlighting for C and C++ files.
+
+syntax c "\.txt$"
+header "-\*-.*\<C(\+\+)?((;|[[:blank:]]).*)?-\*-"
+magic "^(C|C\+\+) (source|program)"
+comment "//"
+
+# Constants.
+color brightred "\<[A-Z_][0-9A-Z_]*\>"
+# Labels.
+color brightmagenta "^[[:blank:]]*[A-Z_a-z][0-9A-Z_a-z]*:[[:blank:]]*$"
+color normal ":[[:blank:]]*$"
+
+# Types and related keywords.
+color green "\<(auto|bool|char|const|double|enum|extern|float|inline|int|long|restrict|short|signed|sizeof|static|struct|typedef|union|unsigned|void)\>"
+color green "\<(vec2D|vec3D|vec3D_l)\>"
+color green "\<([[:lower:]][[:lower:]_]*|(u_?)?int(8|16|32|64))_t\>"
+
+# Single-quoted stuff (characters, backslash escapes, hex and octal byte codes).
+color brightmagenta "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
+
+# Comments.
+color brightblue "//.*"
+color brightblue start="/\*" end="\*/"
+
+# Reminders.
+color brightwhite,yellow "\<(TODO|NOTE|DEL|HELP)\>"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
